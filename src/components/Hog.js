@@ -4,8 +4,10 @@ import Details from './Details'
 export default class Hog extends Component {
   //state - buttonClicked: false
   state = {buttonClicked: false}
+
   //when button is clicked, state changes to true
   clickHandler = () => {
+    //prevState is the entire object: {buttonClicked: false}
     this.setState(prevState => {
       return {buttonClicked: !prevState.buttonClicked}
     })
