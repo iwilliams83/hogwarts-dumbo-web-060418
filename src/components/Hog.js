@@ -1,13 +1,22 @@
 import React, {Component} from 'react';
+import Details from './Details'
 
 export default class Hog extends Component {
+  //state - buttonClicked: false
+  state = {buttonClicked: false}
+  //when button is clicked, state changes to true
+  clickHandler = () => {
+    this.setState(prevState => {
+      return {buttonClicked: !prevState.buttonClicked}
+    })
+  }
+
   render(){
-    return (<div className="ui eight wide column">
+    return (<div className="ui eight wide column" className="pigTile">
       <img src={this.props.image}></img>
-      <h2>Name: {this.props.name}</h2>
-      <p>Specialty: {this.props.specialty}</p>
-      <p>{this.props.weight}</p>
-      <p>{this.props.medal}</p>
+      <h3>Name: {this.props.name}</h3>
+      <button onClick={this.clickHandler}>Show details</button>
+      {this.state.buttonClicked ? <Details details={this.props} /> : null}
     </div>)
   }
 }
